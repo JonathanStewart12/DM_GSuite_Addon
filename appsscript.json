@@ -1,0 +1,80 @@
+{
+  "timeZone": "Europe/London",
+  "dependencies": {
+    "enabledAdvancedServices": [
+      {
+        "userSymbol": "Drive",
+        "serviceId": "drive",
+        "version": "v2"
+      },
+      {
+        "userSymbol": "Gmail",
+        "serviceId": "gmail",
+        "version": "v1"
+      }
+    ]
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive.addons.metadata.readonly",
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/script.external_request",
+    "https://www.googleapis.com/auth/documents.currentonly",
+    "https://www.googleapis.com/auth/spreadsheets.currentonly",
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.addons.execute",
+    "https://www.googleapis.com/auth/userinfo.email"
+  ],
+  "urlFetchWhitelist": [
+    "https://www.googleapis.com/drive/v2/files/",
+    "https://gmail.googleapis.com/gmail/v1/users/",
+    "https://*.document-safe.com/"
+  ],
+  "runtimeVersion": "V8",
+  "addOns": {
+    "common": {
+      "name": "Document Manager",
+      "logoUrl": "https://o365webapps.azurewebsites.net/assets/DLX_128x128.png"
+    },
+    "gmail": {
+      "contextualTriggers": [
+        {
+          "unconditional": {},
+          "onTriggerFunction": "onLoadGmail"
+        }
+      ],
+      "homepageTrigger": {
+        "enabled": true,
+        "runFunction": "onLoadGmail"
+      }
+    },
+    "docs": {
+      "homepageTrigger": {
+        "enabled": true,
+        "runFunction": "onLoadDocs"
+      },
+      "onFileScopeGrantedTrigger": {
+        "runFunction": "onLoadDocs"
+      }
+    },
+    "drive": {
+      "onItemsSelectedTrigger": {
+        "runFunction": "onLoadDrive"
+      },
+      "homepageTrigger": {
+        "enabled": true,
+        "runFunction": "onLoadDrive"
+      }
+    },
+    "sheets": {
+      "homepageTrigger": {
+        "enabled": true,
+        "runFunction": "onLoadSheets"
+      },
+      "onFileScopeGrantedTrigger": {
+        "runFunction": "onLoadSheets"
+      }
+    }
+  }
+}
