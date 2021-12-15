@@ -28,8 +28,7 @@
   ],
   "urlFetchWhitelist": [
     "https://www.googleapis.com/drive/v2/files/",
-    "https://gmail.googleapis.com/gmail/v1/users/",
-    "https://*.document-safe.com/"
+    "https://gmail.googleapis.com/gmail/v1/users/"  
   ],
   "runtimeVersion": "V8",
   "addOns": {
